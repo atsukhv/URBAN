@@ -5,6 +5,11 @@ results = []  # список со средними баллами
 students = list(students)  # преобразование множества в список
 students.sort()  # сортировка по алфавиту
 
+# линейный способ ----------------------------
+# results = [sum(grades[0]) / len(grades[0]), sum(grades[1]) / len(grades[1]), sum(grades[2]) / len(grades[2]),
+#            sum(grades[3]) / len(grades[3]), sum(grades[4]) / len(grades[4])]
+# ---------------------------------------------
+
 for sublist in grades:
     quantity = len(sublist)  # вычисляем количество оценок в подсписке
     summ = sum(sublist)  # вычисляем сумму оценок
