@@ -5,6 +5,6 @@ while index < len(list1):
     number = list1[index]
     if number < 0:
         break
-
-    print(number)
+    if number > 0:
+        print(number)
     index += 1
