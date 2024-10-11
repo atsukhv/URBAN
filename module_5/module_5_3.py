@@ -51,6 +51,7 @@ class House:
     def __iadd__(self, value):
         return self.__add__(value)
 
+
 h1 = House('ЖК Эльбрус', 10)
 h2 = House('ЖК Акация', 20)
 
