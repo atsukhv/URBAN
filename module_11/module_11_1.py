@@ -1,3 +1,14 @@
+"""
+requirements.txt
+
+requests==2.32.3
+pandas==2.2.3
+matplotlib==3.9.2
+
+"""
+
+
+
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
