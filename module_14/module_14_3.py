@@ -25,13 +25,49 @@ class UserState(StatesGroup):
 keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 button_calculate = KeyboardButton('Рассчитать')
 button_info = KeyboardButton('Информация')
-keyboard.add(button_calculate, button_info)
+button_buy = KeyboardButton('Купить')
+keyboard.add(button_calculate, button_info, button_buy)
 
 # Создание Inline-клавиатуры
 inline_keyboard = InlineKeyboardMarkup()
 button_calories = InlineKeyboardButton('Рассчитать норму калорий', callback_data='calories')
 button_formulas = InlineKeyboardButton('Формулы расчёта', callback_data='formulas')
 inline_keyboard.add(button_calories, button_formulas)
+
+inline_keyboard_buy = InlineKeyboardMarkup()
+product1 = InlineKeyboardButton('Product1', callback_data='product_buying')
+product2 = InlineKeyboardButton('Product2', callback_data='product_buying')
+product3 = InlineKeyboardButton('Product3', callback_data='product_buying')
+product4 = InlineKeyboardButton('Product4', callback_data='product_buying')
+inline_keyboard_buy.add(product1, product2, product3, product4)
+
+@dp.message_handler(lambda message: message.text == 'Купить')
+async def get_buying_list(message: types.Message):
+    with open('../module_14/photo/кальций.jpg', 'rb') as k_photo:
+        await message.answer_photo(photo=k_photo, caption=f'Название: Кальций\n'
+                                                          f'Описание: Для костей👍\n'
+                                                          f'Цена: 100 рублей')
+
+    with open('../module_14/photo/карнетин.png', 'rb') as l_photo:
+        await message.answer_photo(photo=l_photo, caption=f'Название: Карнетин\n'
+                                                          f'Описание: Для спорта👍\n'
+                                                          f'Цена: 200 рублей')
+
+    with open('../module_14/photo/Колаген.png', 'rb') as ko_photo:
+        await message.answer_photo(photo=ko_photo, caption=f'Название: Колаген\n'
+                                                           f'Описание: Для кожи👍\n'
+                                                           f'Цена: 300 рублей')
+
+    with open('../module_14/photo/с.png', 'rb') as с_photo:
+        await message.answer_photo(photo=с_photo, caption=f'Название: Витамин С\n'
+                                                          f'Описание: По сути вкусно, и по вкусу вкусно!\n'
+                                                          f'Цена: 400 рублей')
+    await message.answer(f'Выберите продукт для покупки:', reply_markup=inline_keyboard_buy)
+
+
+@dp.callback_query_handler(lambda call: call.data == 'product_buying')
+async def send_confirm_message(call: types.CallbackQuery):
+    await call.message.answer('Вы успешно приобрели продукт!')
 
 
 @dp.message_handler(commands=['start'])
