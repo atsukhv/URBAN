@@ -1,7 +1,6 @@
 {% extends 'main.html' %}
 {% block crud_container %}
     {% if user %}
-        <!-- Отображение информации о конкретном пользователе -->
         <div class="card">
             <h3 class="card-header">{{ user.username }}</h3>
             <div class="card-body">
@@ -10,7 +9,6 @@
             </div>
         </div>
     {% else %}
-        <!-- Отображение списка пользователей -->
         <section>
             <h2 class="text-center">Users</h2>
             <div class="card mt-4">
