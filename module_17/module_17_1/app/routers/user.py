@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schemas import CreateUser, UpdateUser
+from ..schemas import CreateUser, UpdateUser
 
 router = APIRouter(prefix='/user', tags=['user'])
 
